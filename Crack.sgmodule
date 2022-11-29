@@ -5,7 +5,7 @@
 https:\/\/api\.revenuecat\.com header-del x-revenuecat-etag
 
 [MITM]
-hostname = %APPEND% *.busuu.com,*.boshu.*,*.bosuu.*,api.flexibits.com, api.revenuecat.com, buy.itunes.apple.com, api-prod.languagedrops.com, api-production.endel.io, ipadcms.caixin.com,api.craft.do, www.xmind.cn, dayone.app, appwk.baidu.com, info.json, p.du.163.com, account.wps.cn, subscription.grammarly.com, *.instapaper.com, license.enpass.io, api2.tophub.app, api.tapeacall.com,*-api.asqq.io, api.termius.com,menscoach-api.asqq.io,cubox.pro,api3.cls.cn,i.cls.cn,unlock.apps
+hostname = %APPEND% *.busuu.com,*.boshu.*,*.bosuu.*,api.flexibits.com, api.revenuecat.com, buy.itunes.apple.com, api-prod.languagedrops.com, api-production.endel.io, ipadcms.caixin.com,api.craft.do, www.xmind.cn, dayone.app, appwk.baidu.com, info.json, p.du.163.com, account.wps.cn, subscription.grammarly.com, *.instapaper.com, license.enpass.io, api2.tophub.app, api.tapeacall.com,*-api.asqq.io, api.termius.com,menscoach-api.asqq.io,cubox.pro,api3.cls.cn,i.cls.cn,unlock.apps,mb3admin.com,spclient.wg.spotify.com
 
 [Script]
 Busuu = type=http-response,pattern=^https?:\/\/.*\/users\/me,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Crazy-Z7/Scrip/main/Busuu.js,script-update-interval=0
@@ -31,3 +31,5 @@ Grammarly = type=http-response,pattern=^https?:\/\/subscription\.grammarly\.com\
 #Cubox = type=http-response,pattern=^https?:\/\/cubox\.pro\/c\/api\/(userInfo|userPay),requires-body=1,max-size=0,script-path=CuboxUnlock.js
 #Cls = type=http-response,pattern=^https?:\/\/api3\.cls\.cn\/v1\/user_detail\/information|https?:\/\/i\.cls\.cn\/featured\/v2\/home\/recommend\/article|https?:\/\/i\.cls\.cn.*?|https?:\/\/api3\.cls\.cn\/api\/privilege\/my\/column*?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/omy669/omy99/main/Personal_configuration/QuantumultX/cls.js,script-update-interval=0
 Gen unlock = type=http-request,pattern=^https:\/\/unlock\.apps,max-size=0,debug=1,script-path=https://raw.githubusercontent.com/langkhach270389/Surge-LK/main/scripts/langkhach/regex.js
+emby=type=http-response,pattern=^https?:\/\/mb3admin.com\/admin\/service\/registration\/validateDevice,requires-body=1,max-size=0, script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/Emby.js
+spotify-proto = type=http-response,pattern=^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js,script-update-interval=0
