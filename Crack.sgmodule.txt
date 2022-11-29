@@ -1,0 +1,33 @@
+#!name=Crack
+#!desc=合集
+
+[Header Rewrite]
+https:\/\/api\.revenuecat\.com header-del x-revenuecat-etag
+
+[MITM]
+hostname = %APPEND% *.busuu.com,*.boshu.*,*.bosuu.*,api.flexibits.com, api.revenuecat.com, buy.itunes.apple.com, api-prod.languagedrops.com, api-production.endel.io, ipadcms.caixin.com,api.craft.do, www.xmind.cn, dayone.app, appwk.baidu.com, info.json, p.du.163.com, account.wps.cn, subscription.grammarly.com, *.instapaper.com, license.enpass.io, api2.tophub.app, api.tapeacall.com,*-api.asqq.io, api.termius.com,menscoach-api.asqq.io,cubox.pro,api3.cls.cn,i.cls.cn,unlock.apps
+
+[Script]
+Busuu = type=http-response,pattern=^https?:\/\/.*\/users\/me,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Crazy-Z7/Scrip/main/Busuu.js,script-update-interval=0
+Fantastical = type=http-response,pattern=^https:\/\/api\.flexibits\.com\/v1\/(auth|account)\/(device|details|appstore-receipt)\/$,requires-body=1,max-size=0, script-path=fantastical.js,script-update-interval=-1
+Revenuecat = type=http-response,pattern=https:\/\/api\.revenuecat\.com,requires-body=1,max-size=0,script-path=revenuecat.js,script-update-interval=-1
+Buy = type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=verify_receipt.js,script-update-interval=-1
+Drops = type=http-response,pattern=^https:\/\/api-prod\.languagedrops\.com\/syncPurchasesV4$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/langkhach270389/Surge-LK/main/scripts/langkhach/drops.js
+#Endel = type=http-response,pattern=^https:\/\/api-production\.endel\.io\/.*\/call,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/langkhach270389/Surge-LK/main/scripts/langkhach/endel.js
+财新周刊 = type=http-response,pattern=^https?:\/\/ipadcms\.caixin\.com\/(api|tmp|power)\/(articles?|myfree(v\d+)?),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/I-am-R-E/Functional-Store-Hub/Master/CaiXinWeekly/Script/CaiXinWeekly.js,script-update-interval=0
+#Craft = type=http-response,pattern=^https:\/\/api\.craft\.do\/auth\/v2\/profile,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Craft.js,script-update-interval=0
+Xmind = type=http-response,pattern=^https:\/\/www\.xmind\.cn\/_res\/devices,requires-body=1,max-size=0,script-path=xmind.js
+Dayone = type=http-response,pattern=^https:\/\/dayone\.app\/api\/v2\/users,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/dayone.js,script-update-interval=0
+#百度文库 = type=http-response,pattern=^https:\/\/appwk\.baidu\.com\/naapi\/user\/getinfo,requires-body=1,max-size=0,script-path=baidulibrary.js,script-update-interval=0
+#wps = type=http-response,pattern=^https?:\/\/account\.wps\.cn\/api\/users,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/wps.js,script-update-interval=0
+Grammarly = type=http-response,pattern=^https?:\/\/subscription\.grammarly\.com\/api\/v1\/subscription$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yqc007/QuantumultX/master/GrammarlyPremiumCrack.js,script-update-interval=0
+#Instapaper = type=http-response,pattern=https://www.instapaper.com/api/subscription_status,requires-body=1,max-size=0,script-path=instapaper.js
+#Endpass = type=http-response,pattern=^https:\/\/license\.enpass\.io/api/.+/subscription/me,requires-body=1,max-size=0,control-api=1,script-path=https://raw.githubusercontent.com/langkhach270389/Surge-LK/main/scripts/langkhach/enpass.js
+#tophub = type=http-response,pattern=^https?:\/\/api2\.tophub\.app\/account\/sync\?.*,requires-body=1,max-size=0,control-api=1,script-path=Tophub.js
+#tapeacall = type=http-response,pattern=^https://api.tapeacall.com/v3/receipt,requires-body=1,max-size=0,script-path= https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/tapeacall.js,script-update-interval=0
+#Muscle Booster = type=http-response,pattern=^https:\/\/menscoach-api\.asqq\.io\/prod\/user$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/langkhach270389/Surge-LK/main/scripts/langkhach/musclebooster.js
+#Terminus = type=http-response,pattern=https:\/\/api\.termius\.com\/api\/.+\/bulk\/account\/,requires-body=1,max-size=0,script-path=terminus.js
+#克拉壁纸 = type=http-response,pattern=^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yqc007/QuantumultX/master/ClarityPaperProCrack.js,script-update-interval=0
+#Cubox = type=http-response,pattern=^https?:\/\/cubox\.pro\/c\/api\/(userInfo|userPay),requires-body=1,max-size=0,script-path=CuboxUnlock.js
+#Cls = type=http-response,pattern=^https?:\/\/api3\.cls\.cn\/v1\/user_detail\/information|https?:\/\/i\.cls\.cn\/featured\/v2\/home\/recommend\/article|https?:\/\/i\.cls\.cn.*?|https?:\/\/api3\.cls\.cn\/api\/privilege\/my\/column*?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/omy669/omy99/main/Personal_configuration/QuantumultX/cls.js,script-update-interval=0
+Gen unlock = type=http-request,pattern=^https:\/\/unlock\.apps,max-size=0,debug=1,script-path=https://raw.githubusercontent.com/langkhach270389/Surge-LK/main/scripts/langkhach/regex.js
