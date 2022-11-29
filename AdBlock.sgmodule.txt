@@ -1,0 +1,47 @@
+#!name=AdBlock
+#!desc= 合集
+
+[General]
+force-http-engine-hosts = %APPEND% *.cp31.ott.cibntv.net
+
+[URL Rewrite]
+^https?:\/\/.+?\.googlevideo\.com\/.+\/videogoodput - reject
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads - reject
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking|sw.js|error_204|generate_204) - reject
+^https?:\/\/s\.youtube\.com\/api\/stats\/(qoe|watchtime|) - reject
+^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v\d\/player\/ad_break - reject
+^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(log_event|feedback|att|guide) - reject
+^https:\/\/www\.youtube\.com\/pcs\/activeview - reject
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) $1$2$3 header
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad - reject
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext - reject
+# 网易云广告->m.ads.8le8le.com,iadmusicmat.music.com
+^https?:\/\/iadmusicmat\.music\.126\.net\/.+\.jpg - reject
+^http:\/\/interface\.music\.163\.com\/eapi\/ad\/config\/get - reject
+^https?:\//m\.ads\.8le8le\.com\/adShow - reject
+# 高德地图广告
+^http:\/\/ems\.youku\.com\/imp\? - reject
+^http:\/\/optimus-ads\.amap\.com\/uploadimg\/.+ - reject
+# 搬运淘宝(by gitee-木剑)->gw.alicdn.com,heic.alicdn.com
+^https?:\/\/(gw|heic)\.alicdn\.com\/\w{2}s\/.+\.jpg_(9\d{2}|\d{4}) - reject
+^https?:\/\/(gw|heic)\.alicdn\.com\/imgextra\/.+\d{4}-\d{4}\.jpg_(9\d{2}|\d{4}) - reject
+#趣听弹窗
+^https:\/\/api\.bspapp\.com\/client - reject
+
+
+[Rule]
+//URL-REGEX,^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player,🇺🇸US
+AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT-NO-DROP
+
+# 高德地图
+DOMAIN,optimus-ads.amap.com,REJECT
+
+[Script]
+youtube-fake = type=http-request,pattern=^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad,requires-body=0,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube-fake.js
+adsinhome = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next)\?,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/youtube.js
+youtube-player = type=http-response,pattern=^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/player,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube-player.js
+微信公众号去广告=type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+趣听去弹窗 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.bspapp\.com\/client$,script-path=https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/qtmusic.js
+
+[MITM]
+hostname = %APPEND% -redirector*.googlevideo.com,*.googlevideo.com,www.youtube.com,-s.youtube.com, youtubei.googleapis.com, mp.weixin.qq.com, api-access.pangolin-sdk-toutiao.com, is.snssdk.com,mi.gdt.qq.com, open.e.kuaishou.com,appconf.mail.163.com,analytics.163.com,api.weibo.cn,mapi.weibo.com,*.uve.weibo.com,mbd.baidu.com,m.ads.8le8le.com,iadmusicmat.music.com,ma-adx.ctrip.com,m.ctrip.com,api.m.jd.com,mp.weixin.qq.com,ocean.shuqireader.com,mi.gdt.qq.com,mobads.baidu.com,sq.sljkj.com,img-tailor.11222.cn,j-image.missfresh.cn, gw.alicdn.com, heic.alicdn.com,apiwz.midukanshu.com,api.bspapp.com
