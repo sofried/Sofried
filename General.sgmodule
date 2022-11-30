@@ -5,9 +5,15 @@
 https:\/\/api\.revenuecat\.com header-del x-revenuecat-etag
 
 [MITM]
-hostname = %APPEND% *.busuu.com,*.boshu.*,*.bosuu.*,api.flexibits.com, api.revenuecat.com, buy.itunes.apple.com, api-prod.languagedrops.com, api-production.endel.io, ipadcms.caixin.com,api.craft.do, www.xmind.cn, dayone.app, appwk.baidu.com, info.json, p.du.163.com, account.wps.cn, subscription.grammarly.com, *.instapaper.com, license.enpass.io, api2.tophub.app, api.tapeacall.com,*-api.asqq.io,menscoach-api.asqq.io,cubox.pro,api3.cls.cn,i.cls.cn,unlock.apps,mb3admin.com,spclient.wg.spotify.com,api2.vlognow.me,medi.dxzzy321.top
+hostname = %APPEND% *.busuu.com,*.boshu.*,*.bosuu.*,api.flexibits.com, api.revenuecat.com, buy.itunes.apple.com, api-prod.languagedrops.com, api-production.endel.io, ipadcms.caixin.com,api.craft.do, www.xmind.cn, dayone.app, appwk.baidu.com, info.json, p.du.163.com, account.wps.cn, subscription.grammarly.com, *.instapaper.com, license.enpass.io, api2.tophub.app, api.tapeacall.com,*-api.asqq.io,menscoach-api.asqq.io,cubox.pro,api3.cls.cn,i.cls.cn,unlock.apps,mb3admin.com,spclient.wg.spotify.com,api2.vlognow.me,medi.dxzzy321.top,shimo.im
 
 [Script]
+# 合集
+Pro = type=http-response,pattern= ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers\/(\$RCAnonymousID%)?([\u4E00-\u9FA5A-Za-z0-9-_]+))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/revenuecat.js
+RC = type=http-request,pattern= ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers\/(\$RCAnonymousID%)?([\u4E00-\u9FA5A-Za-z0-9-_]+)),requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/bytq.js,script-update-interval=0
+Receipt = type=http-response,pattern=https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/test.js
+projects = type=http-response,pattern=^https://firebaseremoteconfig.googleapis.com/v1/projects/filebox-ac299/.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/projects.js
+
 # Busuu
 Busuu = type=http-response,pattern=^https?:\/\/.*\/users\/me,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Crazy-Z7/Scrip/main/Busuu.js,script-update-interval=0
 
@@ -18,7 +24,7 @@ Fantastical = type=http-response,pattern=^https:\/\/api\.flexibits\.com\/v1\/(au
 #Revenuecat = type=http-response,pattern=https:\/\/api\.revenuecat\.com,requires-body=1,max-size=0,script-path=revenuecat.js,script-update-interval=-1
 
 # Any Buy iTunes
-#Buy = type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=verify_receipt.js,script-update-interval=-1
+Buy = type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=verify_receipt.js,script-update-interval=-1
 
 # Drops
 Drops = type=http-response,pattern=^https:\/\/api-prod\.languagedrops\.com\/syncPurchasesV4$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/langkhach270389/Surge-LK/main/scripts/langkhach/drops.js
@@ -86,8 +92,5 @@ VN视频剪辑 = type=http-response,pattern=^https?:\/\/api2\.vlognow\.me\/vn-pa
 # VivaCut
 #VivaCut = type=http-response,pattern=^https?:\/\/medi\.dxzzy321\.top\/api\/rest\/commerce\/integrate\/vip\/perform$,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/yqc007/QuantumultX/master/VivaCutProCrack.js,script-update-interval=0
 
-# 合集
-Pro = type=http-response,pattern= ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers\/(\$RCAnonymousID%)?([\u4E00-\u9FA5A-Za-z0-9-_]+))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/revenuecat.js
-RC = type=http-request,pattern= ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers\/(\$RCAnonymousID%)?([\u4E00-\u9FA5A-Za-z0-9-_]+)),requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/bytq.js,script-update-interval=0
-Receipt = type=http-response,pattern=https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/test.js
-projects = type=http-response,pattern=^https://firebaseremoteconfig.googleapis.com/v1/projects/filebox-ac299/.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/projects.js
+# Shimo
+石墨文档=type=http-response,pattern=^https:\//shimo.im\/lizard-api\/users\/me,requires-body=1,script-path=https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/shimo.js
