@@ -22,9 +22,12 @@ Fantastical = type=http-response,pattern=^https:\/\/api\.flexibits\.com\/v1\/(au
 
 # Any Revenuecat App
 Revenuecat = type=http-response,pattern=https:\/\/api\.revenuecat\.com,requires-body=1,max-size=0,script-path=revenuecat.js,script-update-interval=-1
+<<<<<<< HEAD
 
 #Fileball
 Fileball = type=http-response,pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v\d\/projects,requires-body=1,max-size=0,script-path=Fileball.js
+=======
+>>>>>>> 65e7db5bb18b725e8a1496446058856dc5e5fc1c
 
 # Any Buy iTunes
 Buy = type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=verify_receipt.js,script-update-interval=-1
