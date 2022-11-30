@@ -2,13 +2,17 @@
 #!desc=合集
 
 [General]
+
 # AdGuard DNS
 dns-server = 94.140.14.14, 94.140.14.15, system
+
 # Boxjs
 force-http-engine-hosts = %APPEND% boxjs.com,boxjs.net
+
 # General
 skip-proxy = %APPEND% passenger.t3go.cn,www.baidu.com,yunbusiness.ccb.com,iosapps.itunes.apple.com
 always-real-ip = %APPEND% *.126.net,*.example,*.ffxiv.com,*.finalfantasyxiv.com,*.home.arpa,*.invalid,*.kuwo.cn,*.lan,*.linksys.com,*.linksyssmartwifi.com,*.local,*.localdomain,*.localhost,*.logon.battle.net,*.logon.battlenet.com.cn,*.msftconnecttest.com,*.msftconnecttest.com,*.msftncsi.com,*.msftncsi.com,*.music.163.com,*.music.migu.cn,*.ntp.org.cn,*.router.asus.com,*.square-enix.com,*.srv.nintendo.net,*.stun.playstation.net,*.test,*.time.edu.cn,*.xboxlive.com,*.xiami.com,*.y.qq.com,+.battlenet.com.cn,+.nflxvideo.net,+.pool.ntp.org,+.srv.nintendo.net,+.stun.*.*,+.stun.*.*.*,+.stun.*.*.*.*,+.stun.playstation.net,+.wargaming.net,+.wggames.cn,+.wotgame.cn,+.wowsgame.cn,amobile.music.tc.qq.co,api-jooxtt.sanook.com,api.joox.com,aqqmusic.tc.qq.com,dl.stream.qqmusic.qq.com,heartbeat.belkin.com,isure.stream.qqmusic.qq.com,joox.com,lens.l.google.com,localhost.ptlogin2.qq.com,localhost.sec.qq.com,mesu.apple.com,mobileoc.music.tc.qq.com,msftconnecttest.com,msftncsi.com,music.163.com,music.migu.cn,music.taihe.com,musicapi.taihe.com,ntp.*.com,ntp1.*.com,ntp2.*.com,ntp3.*.com,ntp4.*.com,ntp5.*.com,ntp6.*.com,ntp7.*.com,proxy.golang.org,songsearch.kugou.com,streamoc.music.tc.qq.com,stun.*.*,stun.*.*.*,stun.l.google.com,stun.l.google.com,swcdn.apple.com,swdist.apple.com,swdownload.apple.com,swquery.apple.com,swscan.apple.com,time.*.apple.com,time.*.com,time.*.edu.cn,time.*.gov,time1.*.com,time1.cloud.tencent.com,time2.*.com,time3.*.com,time4.*.com,time5.*.com,time6.*.com,time7.*.com,trackercdn.kugou.com,xbox.*.microsoft.com,xbox.*.microsoft.com,xnotify.xboxlive.com,y.qq.com
+
 tun-excluded-routes = %APPEND% 239.255.255.250/32
 
 [URL Rewrite]
@@ -24,29 +28,43 @@ PROCESS-NAME,/System/Library/PrivateFrameworks/Lookup.framework/Versions/A/XPCSe
 DOMAIN,lookup-api.apple.com,𝗣𝗥𝗢𝗫𝗬
 DOMAIN,lookup-api.apple.com.edgekey.net,𝗣𝗥𝗢𝗫𝗬
 DOMAIN,e16991.b.akamaiedge.net,𝗣𝗥𝗢𝗫𝗬
+
 # > VSCO 代理
 DOMAIN,measurement.com,𝗣𝗥𝗢𝗫𝗬
+
 # > 555电影网
 DOMAIN,www.o8tv.com,𝗗𝗜𝗥𝗘𝗖𝗧
+
 # > Safari 防跳转
 DOMAIN,app-site-association.cdn-apple.com,REJECT
+
 # > Boxjs 代理
 DOMAIN-KEYWORD,jsdelivr.net,𝗣𝗥𝗢𝗫𝗬
 
 [Script]
 // 茶杯狐、大师兄影视、解析网、555电影
 豆瓣电影 = type=http-response,pattern=^https://m.douban.com/movie/subject/.+,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/githubdulong/Script/master/Douban.js
+
 # Bilibili
 Bili Region = type=http-response,pattern=^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(pgc\/view\/v\d\/app\/season|x\/offline\/version)\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js
 #可选, 适用于搜索指定地区的番剧
 Bili Search = type=http-request,pattern=^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/x\/v\d\/search(\/type)?\?.+?%20(%E6%B8%AF|%E5%8F%B0|%E4%B8%AD)&,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js
+
 # Boxjs
 BoxJs = type=http-request,pattern=https?:\/\/boxjs\.(com|net),script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, requires-body=true, timeout=120
+
 # Sub-Store
 Sub-Store = type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store.min.js,requires-body=true,timeout=120,max-size=131072
 Sub-Store Sync = type=cron,cronexp=0 0 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
+
 # TestFlight
 TestFlight账户管理 = type=http-request,pattern=^https:\/\/testflight\.apple\.com\/v\d\/(app|account|invite)s\/,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/TestFlight/TestFlightAccount.js
 
+# bilibili 网页跳转到国际版
+bilibili-redirect = type=http-request,pattern=^https:\/\/d\.bilibili\.com\/bi-li-bi-li-dong-hua,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Bilibili/bilibili_redirect.js
+
+# WeRead
+WeRead = type=http-response,pattern=https:\/\/i\.weread\.qq\.com\/(book\/(reading[sS]tat|chapterReview)|user\/profile|groups\/readerEntrance|review\/list|mobileSync),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/WeRead/weread.js
+
 [MITM]
-hostname = %APPEND% m.douban.com,ap?.bili*i.com, ap?.bili*i.net,*.google.cn, *.google.com.hk,sub.store,testflight.apple.com
+hostname = %APPEND% m.douban.com,ap?.bili*i.com,ap?.bili*i.net,*.google.cn, *.google.com.hk,sub.store,testflight.apple.com,d.bilibili.com,boxjs.com,boxjs.net,i.weread.qq.com
