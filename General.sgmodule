@@ -5,14 +5,14 @@
 https:\/\/api\.revenuecat\.com header-del x-revenuecat-etag
 
 [MITM]
-hostname = %APPEND% *.busuu.com,*.boshu.*,*.bosuu.*,api.flexibits.com, api.revenuecat.com, buy.itunes.apple.com, api-prod.languagedrops.com, api-production.endel.io, ipadcms.caixin.com,api.craft.do, www.xmind.cn, dayone.app, appwk.baidu.com, info.json, p.du.163.com, account.wps.cn, subscription.grammarly.com, *.instapaper.com, license.enpass.io, api2.tophub.app, api.tapeacall.com,*-api.asqq.io,menscoach-api.asqq.io,cubox.pro,api3.cls.cn,i.cls.cn,unlock.apps,mb3admin.com,spclient.wg.spotify.com,api2.vlognow.me,medi.dxzzy321.top,shimo.im
+hostname = %APPEND% *.busuu.com,*.boshu.*,*.bosuu.*,api.flexibits.com, api.revenuecat.com, buy.itunes.apple.com, api-prod.languagedrops.com, api-production.endel.io, ipadcms.caixin.com,api.craft.do, www.xmind.cn, dayone.app, appwk.baidu.com, info.json, p.du.163.com, account.wps.cn, subscription.grammarly.com, *.instapaper.com, license.enpass.io, api2.tophub.app, api.tapeacall.com,*-api.asqq.io,menscoach-api.asqq.io,cubox.pro,api3.cls.cn,i.cls.cn,unlock.apps,mb3admin.com,spclient.wg.spotify.com,api2.vlognow.me,medi.dxzzy321.top,shimo.im,firebaseremoteconfig.googleapis.com
 
 [Script]
 # 合集
-Pro = type=http-response,pattern= ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers\/(\$RCAnonymousID%)?([\u4E00-\u9FA5A-Za-z0-9-_]+))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/revenuecat.js
-RC = type=http-request,pattern= ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers\/(\$RCAnonymousID%)?([\u4E00-\u9FA5A-Za-z0-9-_]+)),requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/bytq.js,script-update-interval=0
-Receipt = type=http-response,pattern=https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/test.js
-projects = type=http-response,pattern=^https://firebaseremoteconfig.googleapis.com/v1/projects/filebox-ac299/.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/projects.js
+#Pro = type=http-response,pattern= ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers\/(\$RCAnonymousID%)?([\u4E00-\u9FA5A-Za-z0-9-_]+))$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/revenuecat.js
+#RC = type=http-request,pattern= ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers\/(\$RCAnonymousID%)?([\u4E00-\u9FA5A-Za-z0-9-_]+)),requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/bytq.js,script-update-interval=0
+#Receipt = type=http-response,pattern=https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/test.js
+#projects = type=http-response,pattern=^https://firebaseremoteconfig.googleapis.com/v1/projects/filebox-ac299/.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/projects.js
 
 # Busuu
 Busuu = type=http-response,pattern=^https?:\/\/.*\/users\/me,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Crazy-Z7/Scrip/main/Busuu.js,script-update-interval=0
@@ -21,7 +21,10 @@ Busuu = type=http-response,pattern=^https?:\/\/.*\/users\/me,requires-body=1,max
 Fantastical = type=http-response,pattern=^https:\/\/api\.flexibits\.com\/v1\/(auth|account)\/(device|details|appstore-receipt)\/$,requires-body=1,max-size=0, script-path=fantastical.js,script-update-interval=-1
 
 # Any Revenuecat App
-#Revenuecat = type=http-response,pattern=https:\/\/api\.revenuecat\.com,requires-body=1,max-size=0,script-path=revenuecat.js,script-update-interval=-1
+Revenuecat = type=http-response,pattern=https:\/\/api\.revenuecat\.com,requires-body=1,max-size=0,script-path=revenuecat.js,script-update-interval=-1
+
+#Fileball
+Fileball = type=http-response,pattern=^https:\/\/firebaseremoteconfig\.googleapis\.com\/v\d\/projects,requires-body=1,max-size=0,script-path=Fileball.js
 
 # Any Buy iTunes
 Buy = type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=verify_receipt.js,script-update-interval=-1
