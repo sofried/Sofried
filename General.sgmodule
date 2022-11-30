@@ -15,10 +15,10 @@ Busuu = type=http-response,pattern=^https?:\/\/.*\/users\/me,requires-body=1,max
 Fantastical = type=http-response,pattern=^https:\/\/api\.flexibits\.com\/v1\/(auth|account)\/(device|details|appstore-receipt)\/$,requires-body=1,max-size=0, script-path=fantastical.js,script-update-interval=-1
 
 # Any Revenuecat App
-Revenuecat = type=http-response,pattern=https:\/\/api\.revenuecat\.com,requires-body=1,max-size=0,script-path=revenuecat.js,script-update-interval=-1
+#Revenuecat = type=http-response,pattern=https:\/\/api\.revenuecat\.com,requires-body=1,max-size=0,script-path=revenuecat.js,script-update-interval=-1
 
 # Any Buy iTunes
-Buy = type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=verify_receipt.js,script-update-interval=-1
+#Buy = type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=verify_receipt.js,script-update-interval=-1
 
 # Drops
 Drops = type=http-response,pattern=^https:\/\/api-prod\.languagedrops\.com\/syncPurchasesV4$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/langkhach270389/Surge-LK/main/scripts/langkhach/drops.js
