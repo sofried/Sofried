@@ -60,8 +60,10 @@ BoxJs = type=http-request,pattern=https?:\/\/boxjs\.(com|net),script-path=https:
 Sub-Store = type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store.min.js,requires-body=true,timeout=120,max-size=131072
 Sub-Store Sync = type=cron,cronexp=0 0 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
 
-# TestFlight
+# TestFlight & Auto Join
 TestFlight账户管理 = type=http-request,pattern=^https:\/\/testflight\.apple\.com\/v\d\/(app|account|invite)s\/,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/TestFlight/TestFlightAccount.js
+//信息获取 = type=http-request,pattern=^https:\/\/testflight\.apple\.com\/v3\/accounts/.*\/apps$,requires-body=0,script-path=https://raw.githubusercontent.com/DecoAri/JavaScript/main/Surge/TF_keys.js
+加入测试 = type=cron,cronexp="*/10 * * * * *",script-path=https://raw.githubusercontent.com/githubdulong/Script/master/Auto_join_TF.js,wake-system=0,timeout=180
 
 # bilibili 网页跳转到国际版
 bilibili-redirect = type=http-request,pattern=^https:\/\/d\.bilibili\.com\/bi-li-bi-li-dong-hua,script-path=https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Bilibili/bilibili_redirect.js
